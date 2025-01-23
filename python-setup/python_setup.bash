@@ -3,7 +3,7 @@ sudo apt install software-properties-common
 sudo add-apt-repository ppa:deadsnakes/ppa
 # Update package list and upgrade packages
 sudo apt update && sudo apt upgrade -y
-sudo apt install python3.9
+sudo apt install python3.9 -y
 
 # Install Python
 sudo apt install -y python3 python3-venv python3-dev
