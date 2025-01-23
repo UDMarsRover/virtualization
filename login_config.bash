@@ -12,7 +12,7 @@ PROFILE_D_DIR="/etc/profile.d"
 create_profile_d_script() {
     for script in "${SCRIPTS_TO_ADD[@]}"; do
         SCRIPT_NAME=$(basename "$script")
-        PROFILE_D_SCRIPT="$PROFILE_D_DIR/$SCRIPT_NAME.sh"
+        PROFILE_D_SCRIPT="$PROFILE_D_DIR/$SCRIPT_NAME"
         
         if [ ! -f "$PROFILE_D_SCRIPT" ]; then
             echo "Creating $PROFILE_D_SCRIPT"
