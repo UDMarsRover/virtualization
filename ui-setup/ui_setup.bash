@@ -10,3 +10,7 @@ wget -O "$IMAGE_PATH" "$IMAGE_URL"
 
 # Set the downloaded image as the desktop background
 gsettings set org.gnome.desktop.background picture-uri "file://$IMAGE_PATH"
+
+# Set a modern Ubuntu desktop theme
+gsettings set org.gnome.desktop.interface gtk-theme "Yaru"
+gsettings set org.gnome.desktop.wm.preferences theme "Yaru"
