@@ -5,20 +5,23 @@ SCRIPTS_TO_ADD=(
     "$HOME/virtualization/git-setup/git_config_launcher.bash"
 )
 
-# Define the profile file to modify
-PROFILE_FILE="$HOME/.bash_profile"
+# Define the profile.d directory
+PROFILE_D_DIR="/etc/profile.d"
 
-# Function to add scripts to the profile file
-add_scripts_to_profile() {
+# Function to create a new script in profile.d
+create_profile_d_script() {
     for script in "${SCRIPTS_TO_ADD[@]}"; do
-        if ! grep -Fxq "source $script" "$PROFILE_FILE"; then
-            echo "Adding source $script to $PROFILE_FILE"
-            echo "source $script" >> "$PROFILE_FILE"
+        SCRIPT_NAME=$(basename "$script")
+        PROFILE_D_SCRIPT="$PROFILE_D_DIR/$SCRIPT_NAME.sh"
+        
+        if [ ! -f "$PROFILE_D_SCRIPT" ]; then
+            echo "Creating $PROFILE_D_SCRIPT"
+            echo "source $script" > "$PROFILE_D_SCRIPT"
         else
-            echo "source $script is already in $PROFILE_FILE"
+            echo "$PROFILE_D_SCRIPT already exists"
         fi
     done
 }
 
 # Execute the function
-add_scripts_to_profile
+create_profile_d_script
